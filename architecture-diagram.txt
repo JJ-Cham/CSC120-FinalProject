@@ -1,0 +1,118 @@
+**Escape the NYC Subway (Train lines 2/5) - Architecture Diagram **
+
+---
+
+**[Main Classes and Relationships]**
+
+```
++----------------+
+|     Game       |   <-- Main controller (runs the game loop)
+|----------------|
+| - Player player
+| - Train train
+| - boolean isRunning
+| - long startTime        (NEW)
+| - long timeLimit        (NEW)
+|----------------|
+| + start()                         [In progress]
+| + processCommand(String cmd)      [In progress]
+| + showImage(String imagePath)     [Stretch goal]
+| + isTimeUp()                      [Not yet started]
++----------------+
+         |
+         | aggregation (has-a)
+         v
++----------------+
+|    Player      |
+|----------------|
+| - CarLocation currentCar
+| - ArrayList<Item> inventory
+|----------------|
+| + move(String direction)          [In progress]
+| + takeItem(Item item)              [Not yet started]
+| + useItem(Item item)               [Not yet started]
++----------------+
+         |
+         | association
+         v
++----------------+
+|    Train       |
+|----------------|
+| - ArrayList<CarLocation> cars
+|----------------|
+| + getCar(int index)                [In progress]
+| + connectCars()                    [Not yet started]
++----------------+
+         |
+         | composition (train made of cars)
+         v
++----------------+
+|  CarLocation   |    <-- Each train car (room)
+|----------------|
+| - String description
+| - String imagePath
+| - ArrayList<Item> items
+| - HashMap<String, CarLocation> exits
+|----------------|
+| + describe()                       [Complete]
+| + addExit(String direction, CarLocation destination) [Complete]
+| + getExit(String direction)        [In progress]
+| + getImage()                       [Stretch goal]
++----------------+
+         |
+         | aggregation (car has items)
+         v
++----------------+
+|     Item       |
+|----------------|
+| - String name
+| - String description
+| - String imagePath
+|----------------|
+| + use()                            [Not yet started]
++----------------+
+```
+
+---
+
+**Where Images Are Used:**
+- `CarLocation` holds an `imagePath` to display the train car background.
+- `Item` optionally holds an `imagePath` for its image.
+- `Game` class handles displaying images when moving or picking up/using items.
+
+**New Timer-Related Attributes and Methods:**
+- `startTime` (Game) - When the game begins.
+- `timeLimit` (Game) - Maximum allowed time (e.g., 5 minutes).
+- `isTimeUp()` (Game) - Checks if player ran out of time.
+- Timer check is integrated inside `processCommand` to enforce time pressure.
+
+---
+
+**Quick Notes:**
+- Basic game play is based on moving through cars, interacting with items.
+- Timer pressure adds challenge without requiring new levels yet.
+- Designed to easily extend with levels, more items, puzzles, or even NPCs later.
+
+---
+
+**Legend for Relationships:**
+- Aggregation (has-a): White diamond arrow.
+- Association (uses/communicates): Straight line.
+- Composition (strong ownership): Filled black diamond arrow.
+
+**Legend for Progress:**
+- **Complete**: Fully working / designed
+- **In progress**: Actively building it
+- **Not yet started**: Haven't built yet
+- **Stretch goal**: Might not build unless there's extra time
+
+---
+
+**Stretch Goals After FP2:**
+- Add sound effects.
+- Create a "Level" class for multi-train scenarios.
+- Implement animated transitions when moving between cars.
+
+---
+
+
