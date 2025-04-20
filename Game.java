@@ -11,7 +11,9 @@ public class Game {
         isRunning = true;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Escape the NYC Subway!");
+        System.out.println("Welcome to Escape the NYC Subway! You're trapped in a train on the 2 and 5 line on 3-av and 149st and need to find a way out.");
+        System.out.println("Type 'look' to see your surroundings, 'go [direction]' to move, or 'quit' to exit the game.");
+        System.out.println("You are currently in " + player.getCurrentCar().getDescription() + ".");
         player.look();
 
         while (isRunning) {

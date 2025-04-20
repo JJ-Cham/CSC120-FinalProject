@@ -109,9 +109,11 @@
 ---
 
 **Stretch Goals After FP2:**
-- Add sound effects.
+- Add sound effects. (maybe even later)
 - Create a "Level" class for multi-train scenarios.
 - Implement animated transitions when moving between cars.
+
+- Note: This code currently doesn't run without bugs.; I'm still trying to make sense of the logic. I'm thinking about utlizing both the train hw and the chatbot hw that we did to help with that. 
 
 ---
 
