@@ -40,6 +40,15 @@ public class Game {
             } else {
                 System.out.println("I don't understand that command.");
             }
+            if (input.startsWith("take ")) {
+                String itemName = input.substring(5);
+                player.takeItem(itemName);
+                showTimeRemaining();
+            } else if (input.equalsIgnoreCase("inventory")) {
+                player.showInventory();
+                showTimeRemaining();
+            }
+            
         }
         scanner.close();
         System.out.println("Game over!");

@@ -1,13 +1,19 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 
 public class CarLocation {
     private String description;
     private HashMap<String, CarLocation> exits;
+    private ArrayList<Item> items; 
+    private boolean isLocked = false;
+    private String requiredItemName = "";
+
 
     public CarLocation(String description) {
         this.description = description;
         this.exits = new HashMap<>();
+        this.items = new ArrayList<>();
     }
 
     public void addExit(String direction, CarLocation neighbor) {
@@ -25,6 +31,52 @@ public class CarLocation {
     public String getAvailableExits() {
         return String.join(", ", exits.keySet());
     }
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    
+    public boolean hasItem(String itemName) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Item takeItem(String itemName) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                items.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
+    
+    public void listItems() {
+        if (items.isEmpty()) {
+            System.out.println("There are no items here.");
+        } else {
+            System.out.println("You see:");
+            for (Item item : items) {
+                System.out.println("- " + item.getName() + ": " + item.getDescription());
+            }
+        }
+    }
+    public void lock(String requiredItemName) {
+        isLocked = true;
+        this.requiredItemName = requiredItemName;
+    }
+    
+    public boolean canEnter(Player player) {
+        if (!isLocked) {
+            return true;
+        }
+        return player.hasItem(requiredItemName);
+    }
+    
+    
 }
 
 // This class represents a location in the subway train. Each location has a description and exits to other locations.
