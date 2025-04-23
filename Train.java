@@ -28,14 +28,3 @@ public class Train {
     }
 }
 
-public static void main(String[] args) {
-    // Create a new Train object and get the starting car
-    Train train = new Train();
-    CarLocation startingCar = train.getStartingCar();
-    
-    // Print the description of the starting car
-    System.out.println("Starting car: " + startingCar.getDescription());
-}
-// Print the available exits from the starting car
-    System.out.println("Exits: " + startingCar.getAvailableExits());
-}
