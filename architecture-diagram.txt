@@ -72,6 +72,10 @@
 | + use()                            [Not yet started]
 +----------------+
 ```
+Flow idea: 
+[Car 1] ---forward---> [Car 2] ---forward---> [Car 3] ---forward---> [Car 4] ---forward---> [Exit Door]
+     ^                    ^                       ^
+   start                crowbar                 key
 
 ---
 
