@@ -26,7 +26,7 @@ public class Player {
                     System.exit(0);
                 }
             } else {
-                System.out.println("The way is blocked. You need a " + nextCar.requiredItemName + " to proceed.");
+                System.out.println("The way is blocked. You need a " + nextCar.getRequiredItemName() + " to proceed.");
             }
         } else {
             System.out.println("You can't go that way!");
@@ -38,6 +38,8 @@ public class Player {
     public void look() {
         System.out.println(currentCar.getDescription());
         System.out.println("Exits: " + currentCar.getAvailableExits());
+        currentCar.listItems();
+        randomEvent();
     }
 
     public void takeItem(String itemName) {
@@ -69,5 +71,36 @@ public class Player {
         }
         return false;
     }
+
+    private void randomEvent() {
+        double chance = Math.random(); // Random number between 0.0 and 1.0
+        if (chance < 0.2) { // 20% chance total
+            int event = (int) (Math.random() * 5); // 5 total events (3 spooky + 2 good)
+    
+            switch (event) {
+                case 0:
+                    System.out.println("You hear skittering in the dark...");
+                    break;
+                case 1:
+                    System.out.println("The lights flicker... and for a second, everything goes black.");
+                    break;
+                case 2:
+                    System.out.println("A distant metallic thud echoes through the train.");
+                    break;
+                case 3:
+                    System.out.println("You find a half-full bottle of water tucked under a seat.");
+                    Game.addTime(15000); // +15 seconds (good reward)
+                    System.out.println("You feel a little more refreshed. (+15 seconds!)");
+                    break;
+                case 4:
+                    System.out.println("You find a working flashlight discarded on a seat.");
+                    Game.addTime(30000); // +30 seconds (big reward)
+                    System.out.println("The path ahead seems a little easier to navigate. (+30 seconds!)");
+                    break;
+            }
+        }
+    }
+    
+    
     
 }

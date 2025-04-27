@@ -13,6 +13,21 @@ public class Game {
         isRunning = true;
         startTime = System.currentTimeMillis();
 
+                  // ASCII banner
+
+        System.out.println("'########:'########:::::'###::::'########::'########::'########:'########:::");
+        System.out.println("... ##..:: ##.... ##:::'## ##::: ##.... ##: ##.... ##: ##.....:: ##.... ##:");
+        System.out.println("::: ##:::: ##:::: ##::'##:. ##:: ##:::: ##: ##:::: ##: ##::::::: ##:::: ##:.");
+        System.out.println("::: ##:::: ########::'##:::. ##: ########:: ########:: ######::: ##:::: ##::");
+        System.out.println("::: ##:::: ##.. ##::: #########: ##.....::: ##.....::: ##...:::: ##:::: ##::");
+        System.out.println("::: ##:::: ##::. ##:: ##.... ##: ##:::::::: ##:::::::: ##::::::: ##:::: ##:");
+        System.out.println("::: ##:::: ##:::. ##: ##:::: ##: ##:::::::: ##:::::::: ########: ########::");
+        System.out.println(":::..:::::..:::::..::..:::::..::..:::::::::..:::::::::........::........:::");
+        System.out.println();
+
+                    
+                
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Escape the NYC Subway!");
         System.out.println("Type 'look' to see your surroundings, 'go [direction]' to move, or 'quit' to exit.");
@@ -64,9 +79,12 @@ public class Game {
 
     private boolean isTimeUp() {
         long currentTime = System.currentTimeMillis();
-        return (currentTime - startTime) >= timeLimit;
-        System.out.println("⏰ Time's up! The train grinds to life... but you're still inside.");
-        System.out.println("Maybe next time you'll escape.");
+        if ((currentTime - startTime) >= timeLimit) {
+            System.out.println("⏰ Time's up! The train grinds to life... but you're still inside.");
+            System.out.println("Maybe next time you'll escape.");
+            return true;
+        }
+        return false;
 
     }
 
@@ -76,6 +94,11 @@ public class Game {
         long seconds = (timeRemaining / 1000) % 60;
         System.out.println("⏳ Time remaining: " + minutes + " minutes and " + seconds + " seconds.");
     }
+
+    public void addTime(long millis) {
+        timeLimit += millis;
+    }
+    
 
     public static void main(String[] args) {
         new Game().start();

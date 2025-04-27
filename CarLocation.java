@@ -85,6 +85,10 @@ public class CarLocation {
     public boolean isExit() {
         return isExit;
     }
+
+    public String getRequiredItemName() {
+        return requiredItemName;
+    }
     
     
     

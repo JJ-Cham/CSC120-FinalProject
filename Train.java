@@ -15,6 +15,9 @@ public class Train {
         CarLocation car3 = new CarLocation("a wrecked car with doors jammed shut");
         CarLocation car4 = new CarLocation("a car with sparking wires and caved-in ceiling");
         CarLocation exitDoor = new CarLocation("the exit door leading to freedom... maybe");
+
+        exitDoor.setExit(true);
+
     
         // Add exits
         car1.addExit("forward", car2);
@@ -48,6 +51,8 @@ public class Train {
         cars.add(car3);
         cars.add(car4);
         cars.add(exitDoor);
+
+
     }    
     
 
