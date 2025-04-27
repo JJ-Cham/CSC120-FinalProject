@@ -48,7 +48,7 @@ public class Train {
         cars.add(car3);
         cars.add(car4);
         cars.add(exitDoor);
-    }
+    }    
     
 
     public CarLocation getStartingCar() {

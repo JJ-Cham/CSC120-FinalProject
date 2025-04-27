@@ -8,6 +8,8 @@ public class CarLocation {
     private ArrayList<Item> items; 
     private boolean isLocked = false;
     private String requiredItemName = "";
+    private boolean isExit = false;
+
 
 
     public CarLocation(String description) {
@@ -75,6 +77,15 @@ public class CarLocation {
         }
         return player.hasItem(requiredItemName);
     }
+
+    public void setExit(boolean isExit) {
+        this.isExit = isExit;
+    }
+    
+    public boolean isExit() {
+        return isExit;
+    }
+    
     
     
 }

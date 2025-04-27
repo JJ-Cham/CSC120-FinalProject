@@ -18,7 +18,13 @@ public class Player {
                 System.out.println("You move " + direction + ".");
                 System.out.println(currentCar.getDescription());
                 System.out.println("Exits: " + currentCar.getAvailableExits());
-                currentCar.listItems(); // Show items in new room
+                currentCar.listItems();
+    
+                if (currentCar.isExit()) {
+                    System.out.println("You force open the final door and escape onto the empty platform...");
+                    System.out.println("You're free. But you'll never forget the sound of those flickering lights.");
+                    System.exit(0);
+                }
             } else {
                 System.out.println("The way is blocked. You need a " + nextCar.requiredItemName + " to proceed.");
             }
@@ -26,6 +32,7 @@ public class Player {
             System.out.println("You can't go that way!");
         }
     }
+    
     
 
     public void look() {

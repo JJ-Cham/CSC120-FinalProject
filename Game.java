@@ -16,6 +16,11 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Escape the NYC Subway!");
         System.out.println("Type 'look' to see your surroundings, 'go [direction]' to move, or 'quit' to exit.");
+        System.out.println("You wake up on a stalled subway train somewhere under the Bronx.");
+        System.out.println("You're alone. The doors are jammed. The lights are flickering.");
+        System.out.println("Find a way through the train... before time runs out.");
+        System.out.println("You're trapped on the 2/5 line at 3rd Ave–149th St.\n");
+
         player.look();
 
         while (isRunning) {
@@ -60,6 +65,9 @@ public class Game {
     private boolean isTimeUp() {
         long currentTime = System.currentTimeMillis();
         return (currentTime - startTime) >= timeLimit;
+        System.out.println("⏰ Time's up! The train grinds to life... but you're still inside.");
+        System.out.println("Maybe next time you'll escape.");
+
     }
 
     private void showTimeRemaining() {
