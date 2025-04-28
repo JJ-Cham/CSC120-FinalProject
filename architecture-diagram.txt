@@ -1,124 +1,86 @@
-**Escape the NYC Subway (Train lines 2/5) - Architecture Diagram **
-
----
-
-**[Main Classes and Relationships]**
-
-```
 +----------------+
 |     Game       |   <-- Main controller (runs the game loop)
 |----------------|
-| - Player player
-| - Train train
-| - boolean isRunning
-| - long startTime        (NEW)
-| - long timeLimit        (NEW)
+| - static long timeLimit         (✅ Complete)
+| - long startTime                (✅ Complete)
+| - Player player                 (✅ Complete)
+| - Train train                   (✅ Complete)
+| - boolean isRunning             (✅ Complete)
 |----------------|
-| + start()                         [In progress]
-| + processCommand(String cmd)      [In progress]
-| + showImage(String imagePath)     [Stretch goal]
-| + isTimeUp()                      [Not yet started]
+| + start()                       (✅ Complete)
+| + processCommand(String cmd)    (✅ Complete)
+| + isTimeUp()                    (✅ Complete)
+| + showTimeRemaining()           (✅ Complete)
+| + addTime(long millis)          (✅ Complete)
 +----------------+
+
          |
          | aggregation (has-a)
          v
+
 +----------------+
 |    Player      |
 |----------------|
-| - CarLocation currentCar
-| - ArrayList<Item> inventory
+| - CarLocation currentCar          (✅ Complete)
+| - ArrayList<Item> inventory        (✅ Complete)
 |----------------|
-| + move(String direction)          [In progress]
-| + takeItem(Item item)              [Not yet started]
-| + useItem(Item item)               [Not yet started]
+| + move(String direction)           (✅ Complete)
+| + takeItem(String itemName)         (✅ Complete)
+| + showInventory()                  (✅ Complete)
+| + look()                            (✅ Complete)
+| + randomEvent()                     (✅ Complete)
 +----------------+
+
          |
          | association
          v
+
 +----------------+
 |    Train       |
 |----------------|
-| - ArrayList<CarLocation> cars
+| - ArrayList<CarLocation> cars       (✅ Complete)
 |----------------|
-| + getCar(int index)                [In progress]
-| + connectCars()                    [Not yet started]
+| + getStartingCar()                  (✅ Complete)
+| + setupTrain()                      (✅ Complete)
 +----------------+
+
          |
          | composition (train made of cars)
          v
+
 +----------------+
-|  CarLocation   |    <-- Each train car (room)
+|  CarLocation   |
 |----------------|
-| - String description
-| - String imagePath
-| - ArrayList<Item> items
-| - HashMap<String, CarLocation> exits
+| - String description                 (✅ Complete)
+| - HashMap<String, CarLocation> exits  (✅ Complete)
+| - ArrayList<Item> items               (✅ Complete)
+| - boolean isLocked                    (✅ Complete)
+| - String requiredItemName             (✅ Complete)
+| - boolean isExit                      (✅ Complete)
 |----------------|
-| + describe()                       [Complete]
-| + addExit(String direction, CarLocation destination) [Complete]
-| + getExit(String direction)        [In progress]
-| + getImage()                       [Stretch goal]
+| + addExit(String direction, CarLocation neighbor)  (✅ Complete)
+| + getExit(String direction)                         (✅ Complete)
+| + addItem(Item item)                                (✅ Complete)
+| + hasItem(String itemName)                          (✅ Complete)
+| + takeItem(String itemName)                         (✅ Complete)
+| + listItems()                                       (✅ Complete)
+| + lock(String requiredItemName)                     (✅ Complete)
+| + canEnter(Player player)                           (✅ Complete)
+| + setExit(boolean isExit)                           (✅ Complete)
+| + isExit()                                          (✅ Complete)
+| + getRequiredItemName()                             (✅ Complete)
 +----------------+
+
          |
-         | aggregation (car has items)
+         | aggregation (has items)
          v
+
 +----------------+
 |     Item       |
 |----------------|
-| - String name
-| - String description
-| - String imagePath
+| - String name                         (✅ Complete)
+| - String description                  (✅ Complete)
 |----------------|
-| + use()                            [Not yet started]
+| + getName()                           (✅ Complete)
+| + getDescription()                    (✅ Complete)
 +----------------+
-```
-Flow idea: 
-[Car 1] ---forward---> [Car 2] ---forward---> [Car 3] ---forward---> [Car 4] ---forward---> [Exit Door]
-     ^                    ^                       ^
-   start                crowbar                 key
-
----
-
-**Where Images Are Used:**
-- `CarLocation` holds an `imagePath` to display the train car background.
-- `Item` optionally holds an `imagePath` for its image.
-- `Game` class handles displaying images when moving or picking up/using items.
-
-**New Timer-Related Attributes and Methods:**
-- `startTime` (Game) - When the game begins.
-- `timeLimit` (Game) - Maximum allowed time (e.g., 5 minutes).
-- `isTimeUp()` (Game) - Checks if player ran out of time.
-- Timer check is integrated inside `processCommand` to enforce time pressure.
-
----
-
-**Quick Notes:**
-- Basic game play is based on moving through cars, interacting with items.
-- Timer pressure adds challenge without requiring new levels yet.
-- Designed to easily extend with levels, more items, puzzles, or even NPCs later.
-
----
-
-**Legend for Relationships:**
-- Aggregation (has-a): White diamond arrow.
-- Association (uses/communicates): Straight line.
-- Composition (strong ownership): Filled black diamond arrow.
-
-**Legend for Progress:**
-- **Complete**: Fully working / designed
-- **In progress**: Actively building it
-- **Not yet started**: Haven't built yet
-- **Stretch goal**: Might not build unless there's extra time
-
----
-
-**Stretch Goals After FP2:**
-- Add sound effects. (maybe even later)
-- Create a "Level" class for multi-train scenarios.
-- Implement animated transitions when moving between cars.
-
-- Note: This code currently doesn't run without bugs.; I'm still trying to make sense of the logic. I'm thinking about utlizing both the train hw and the chatbot hw that we did to help with that. 
-
----
-
-

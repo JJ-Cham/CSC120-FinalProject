@@ -1,4 +1,81 @@
 # CSC120-FinalProject
+# Trapped: The Ultimate Challenge
+Final Project 2 (FP2) — Escape Adventure Game
+By JJ Cham
+
+---
+
+## 🚇 Project Description
+
+You wake up on a stalled subway train somewhere deep under the Bronx. The doors are jammed. The lights flicker. You must find a way through a series of damaged train cars, using found items to escape — before time runs out.
+
+Gameplay includes:
+- Movement through connected train cars
+- Pickup and use of key items (Crowbar, Key)
+- Locked doors that require exploration and puzzle solving
+- Random spooky events and lucky bonus events
+- A countdown timer for added tension
+- Multiple outcomes depending on player actions and time remaining
+
+---
+
+## 🎮 Commands
+
+- `look` — Inspect your current location (description, exits, visible items)
+- `go [direction]` — Move in a direction (e.g., `go forward`, `go backward`)
+- `take [item]` — Pick up an item
+- `inventory` — Check what you're carrying
+- `quit` — Exit the game
+
+For full command descriptions and game map, see [`cheatsheet.md`](./cheatsheet.md).
+
+---
+
+## 🧩 Architecture Diagram
+
+![Architecture Diagram](./architecture.png)
+
+The game uses an object-oriented structure with classes for `Game`, `Player`, `Train`, `CarLocation`, and `Item`.
+
+---
+
+## 📋 Reflection Questions
+
+### 📐 Design Justification
+I designed the game using a clean object-oriented approach. Each class has a clear responsibility, making the code modular and easy to update.  
+Alternative considered: I thought about managing cars only inside `Game`, but using a separate `Train` class made the setup more organized and extensible.
+
+### 🧠 New Things I Learned
+- How to structure a full text adventure in Java.
+- How to lock/unlock paths with item-based puzzles.
+- How to use timers and random events to create pressure and excitement.
+- How to cleanly handle player input and command parsing.
+
+### 🚀 Unlimited Time Features
+If I had unlimited time, I would add:
+- Hidden tunnels and alternate escape paths
+- Sound effects and animations (JavaFX)
+- Random monster encounters
+- Multiple endings and extended lore
+
+---
+
+## 📄 Files Included
+
+- `Game.java`
+- `Player.java`
+- `Train.java`
+- `CarLocation.java`
+- `Item.java`
+- `cheatsheet.md`
+- `architecture.png`
+- `readme.md`
+
+---
+
+## 📜 License
+
+This project was completed for Final Project 2 as part of coursework for CS120 - OOP.
 
 ## Deliverables:
  - Your final codebase 
@@ -10,16 +87,43 @@
   
 
 ## Design justification
+I designed the game using a simple but strong object-oriented structure with classes for Game, Player, Train, CarLocation, and Item. Each class has a clear responsibility, making the program organized, easy to understand, and easy to extend later.
 
+Alternative considered:
+At first, I thought about not creating a Train class, and instead just linking CarLocation objects directly inside Game. But I decided against that because putting all the train setup into Train.java makes the code way more modular and easier to change — if I wanted to add or rearrange cars later, I would only need to edit the Train class, not the whole game logic.
 
 
 ## Additional Reflection Questions
  - What was your **overall approach** to tackling this project?
+
  - What **new thing(s)** did you learn / figure out in completing this project?
+   I feel like I learned so many new things on this journey. How to build a real text adventure engine from scratch in Java using objects and relationships. Also, that it's not as difficult as it may seem to make a text-based game. 
+
+   - How to lock and unlock areas using item-based challenges (Crowbar + Key puzzles).
+
+   - How to use random events and timers to create pressure and atmosphere for the player.
+
+   - How to write helper methods like isTimeUp(), randomEvent(), and addTime() to keep my code organized.
+
+   - How important it is to plan my world layout (map) before writing the code, so the flow made sense.
 
  - Is there anything that you wish you had **implemented differently**?
+
  - If you had **unlimited time**, what additional features would you implement?
- 
+   If I had more time, I would add:
+
+   - More detailed room exploration: Like "search seat" or "open luggage" to make finding items harder.
+
+   - Dynamic random events: Monsters, cave-ins, or train movement that blocks paths temporarily.
+
+   - Sound effects and animations using JavaFX for a full visual experience.
+
+   - Multiple escape routes: Maybe climbing onto the roof of the train or breaking into tunnels.
+
+   - Hidden lore: Newspaper clippings or old messages that tell a creepy story about why the subway is abandoned.
+
+   - I would also probably add Level 2: once you escape the first train, you realize you're still trapped underground, and have to navigate tunnels to find your way out. Or make it even bigger to where different stations or lines add even more cool aspects to the game.
+
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
  - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.

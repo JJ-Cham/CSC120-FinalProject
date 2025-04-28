@@ -5,7 +5,7 @@ public class Game {
     private Train train;
     private boolean isRunning;
     private long startTime;
-    private long timeLimit = 300_000; // 5 minutes
+    private static long timeLimit = 300_000; // 5 minutes
 
     public void start() {
         train = new Train();
@@ -95,7 +95,7 @@ public class Game {
         System.out.println("⏳ Time remaining: " + minutes + " minutes and " + seconds + " seconds.");
     }
 
-    public void addTime(long millis) {
+    public static void addTime(long millis) {
         timeLimit += millis;
     }
     
