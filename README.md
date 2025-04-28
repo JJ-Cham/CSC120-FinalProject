@@ -42,7 +42,7 @@ The game uses an object-oriented structure with classes for `Game`, `Player`, `T
 ## 📋 Reflection Questions
 
 ### 📐 Design Justification
-I designed the game using a clean object-oriented approach. Each class has a clear responsibility, making the code modular and easy to update.  
+I designed the game using a clean object-oriented approach. Each class has a clear responsibility, making the code modular and easy to update. 
 Alternative considered: I thought about managing cars only inside `Game`, but using a separate `Train` class made the setup more organized and extensible.
 
 ### 🧠 New Things I Learned
@@ -50,6 +50,7 @@ Alternative considered: I thought about managing cars only inside `Game`, but us
 - How to lock/unlock paths with item-based puzzles.
 - How to use timers and random events to create pressure and excitement.
 - How to cleanly handle player input and command parsing.
+- I would also probably add Level 2: once you escape the first train, you realize you're still trapped underground, and have to navigate tunnels to find your way out. Or make it even bigger to where different stations or lines add even more cool aspects to the game. 
 
 ### 🚀 Unlimited Time Features
 If I had unlimited time, I would add:
@@ -95,35 +96,9 @@ At first, I thought about not creating a Train class, and instead just linking C
 
 ## Additional Reflection Questions
  - What was your **overall approach** to tackling this project?
-
  - What **new thing(s)** did you learn / figure out in completing this project?
-   I feel like I learned so many new things on this journey. How to build a real text adventure engine from scratch in Java using objects and relationships. Also, that it's not as difficult as it may seem to make a text-based game. 
-
-   - How to lock and unlock areas using item-based challenges (Crowbar + Key puzzles).
-
-   - How to use random events and timers to create pressure and atmosphere for the player.
-
-   - How to write helper methods like isTimeUp(), randomEvent(), and addTime() to keep my code organized.
-
-   - How important it is to plan my world layout (map) before writing the code, so the flow made sense.
-
  - Is there anything that you wish you had **implemented differently**?
-
  - If you had **unlimited time**, what additional features would you implement?
-   If I had more time, I would add:
-
-   - More detailed room exploration: Like "search seat" or "open luggage" to make finding items harder.
-
-   - Dynamic random events: Monsters, cave-ins, or train movement that blocks paths temporarily.
-
-   - Sound effects and animations using JavaFX for a full visual experience.
-
-   - Multiple escape routes: Maybe climbing onto the roof of the train or breaking into tunnels.
-
-   - Hidden lore: Newspaper clippings or old messages that tell a creepy story about why the subway is abandoned.
-
-   - I would also probably add Level 2: once you escape the first train, you realize you're still trapped underground, and have to navigate tunnels to find your way out. Or make it even bigger to where different stations or lines add even more cool aspects to the game.
-
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
  - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.

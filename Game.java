@@ -5,7 +5,7 @@ public class Game {
     private Train train;
     private boolean isRunning;
     private long startTime;
-    private static long timeLimit = 300_000; // 5 minutes
+    private static long timeLimit = 420_000; // 7 minutes
 
     public void start() {
         train = new Train();
@@ -34,7 +34,7 @@ public class Game {
         System.out.println("You wake up on a stalled subway train somewhere under the Bronx.");
         System.out.println("You're alone. The doors are jammed. The lights are flickering.");
         System.out.println("Find a way through the train... before time runs out.");
-        System.out.println("You're trapped on the 2/5 line at 3rd Ave–149th St.\n");
+        System.out.println("You're trapped on the 2/5 line at 3rd Ave 149th St.\n");
 
         player.look();
 

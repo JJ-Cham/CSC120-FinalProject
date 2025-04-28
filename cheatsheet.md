@@ -69,4 +69,3 @@ If your game includes challenges that must be overcome to win, also list them be
 - Escape the subway train by using the Crowbar and Key wisely.
 - If time runs out, the train starts moving again with you still trapped inside...
 
-Good luck escaping! 🚇
