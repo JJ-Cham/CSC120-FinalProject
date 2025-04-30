@@ -70,7 +70,6 @@ If I had unlimited time, I would add:
 - `CarLocation.java`
 - `Item.java`
 - `cheatsheet.md`
-- `architecture.png`
 - `readme.md`
 
 ---
