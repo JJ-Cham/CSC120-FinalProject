@@ -132,14 +132,27 @@ public class Game {
         timeLimit += millis;
     }
 
+    /**
+     * Adjusts the player's score by the given amount.
+     * @param points the number of points to add or subtract.
+     */
+
     public static void addScore(int points) {
         score += points;
     }
     
+    /**
+     * Retrieves the current player score.
+     * @return the player's score.
+     */
     public static int getScore() {
         return score;
     }
-    
+
+    /**
+     * Retrieves the time remaining in the game.
+     * @return the time remaining in milliseconds.
+     */
     public static long getTimeRemaining() {
         return timeLimit - (System.currentTimeMillis() - startTime);
     }

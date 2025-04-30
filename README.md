@@ -41,8 +41,10 @@ The game uses an object-oriented structure with classes for `Game`, `Player`, `T
 ## 📋 Reflection Questions
 
 ### 📐 Design Justification
-I designed the game using a clean object-oriented approach. Each class has a clear responsibility, making the code modular and easy to update. 
-Alternative considered: I thought about managing cars only inside `Game`, but using a separate `Train` class made the setup more organized and extensible.
+I designed the game using a simple but strong object-oriented structure with classes for Game, Player, Train, CarLocation, and Item. Each class has a clear responsibility, making the program organized, easy to understand, and easy to extend later.
+
+Alternative considered:
+At first, I thought about not creating a Train class, and instead just linking CarLocation objects directly inside Game. But I decided against that because putting all the train setup into Train.java makes the code way more modular and easier to change. if I wanted to add or rearrange cars later, I would only need to edit the Train class, not the whole game logic.
 
 ### 🧠 New Things I Learned
 - How to structure a full text adventure in Java.
@@ -85,12 +87,6 @@ This project was completed for Final Project 2 as part of coursework for CS120 -
  - `cheatsheet.md`
  - Completed `rubric.md`
   
-
-## Design justification
-I designed the game using a simple but strong object-oriented structure with classes for Game, Player, Train, CarLocation, and Item. Each class has a clear responsibility, making the program organized, easy to understand, and easy to extend later.
-
-Alternative considered:
-At first, I thought about not creating a Train class, and instead just linking CarLocation objects directly inside Game. But I decided against that because putting all the train setup into Train.java makes the code way more modular and easier to change — if I wanted to add or rearrange cars later, I would only need to edit the Train class, not the whole game logic.
 
 ## New Features for Final Version
 

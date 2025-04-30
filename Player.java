@@ -16,6 +16,11 @@ public class Player {
     }
 
 
+    /**
+     * Moves the player to a new car location based on the specified direction.
+     * Handles logic for blocked exits, item requirements, and escape scenarios.
+     * @param direction The direction in which the player wants to move.
+     */
     public void move(String direction) {
         CarLocation nextCar = currentCar.getExit(direction);
         if (nextCar != null) {
@@ -70,7 +75,10 @@ public class Player {
         
     }
     
-
+    /**
+     * Displays the current car's description, available exits, and items.
+     * Also triggers a random event for added immersion.
+     */
     public void look() {
         System.out.println(currentCar.getDescription());
         System.out.println("Exits: " + currentCar.getAvailableExits());
@@ -102,7 +110,9 @@ public class Player {
 }
 
 
-
+     /**
+     * Displays the player's current inventory of items.
+     */
     public void showInventory() {
         if (inventory.isEmpty()) {
             System.out.println("Your inventory is empty.");
@@ -114,7 +124,11 @@ public class Player {
         }
     }
     
-
+    /**
+     * Checks if the player has a specific item in their inventory.
+     * @param itemName The name of the item to check for.
+     * @return true if the item is found, false otherwise.
+     */
     public boolean hasItem(String itemName) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(itemName)) {
@@ -133,7 +147,11 @@ public class Player {
    }
 
 
-
+    /**
+    * Triggers a random event with a 20% chance when the player interacts with a train car.
+    * The event can be suspenseful (spooky) or beneficial (granting bonuses like extra time).
+    * Events include sounds, environmental changes, or finding useful items.
+    */
     private void randomEvent() {
         double chance = Math.random(); // Random number between 0.0 and 1.0
         if (chance < 0.2) { // 20% chance total
@@ -163,9 +181,4 @@ public class Player {
         }
     } 
 
-
-
-    
-    
-    
 }

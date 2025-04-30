@@ -5,11 +5,20 @@ public class Train {
     //Attributes
     private ArrayList<CarLocation> cars;
 
+
+    /**
+     * Constructor for the Train class.
+     * Initializes the train with a list of car locations and sets up the train layout.
+     */
     public Train() {
         cars = new ArrayList<>();
         setupTrain();
     }
 
+    /**
+     * Sets up the train layout with cars, exits, and items.
+     * Creates a series of connected car locations and places items in them.
+     */
     private void setupTrain() {
         // Create Cars
         CarLocation car1 = new CarLocation("a dirty, graffiti-covered subway car");
@@ -58,7 +67,10 @@ public class Train {
 
     }    
     
-
+    /**
+     * Returns the list of car locations in the train.
+     * @return ArrayList of CarLocation objects representing the train's cars.
+     */
     public CarLocation getStartingCar() {
         return cars.get(0);
     }
