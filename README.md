@@ -52,6 +52,7 @@ At first, I thought about not creating a Train class, and instead just linking C
 - How to use timers and random events to create pressure and excitement.
 - How to cleanly handle player input and command parsing.
 - I would also probably add Level 2: once you escape the first train, you realize you're still trapped underground, and have to navigate tunnels to find your way out. Or make it even bigger to where different stations or lines add even more cool aspects to the game. 
+- Another thing I learned and something that was vital was knowing and choosing when to stop. Since, there are so many cool things that you can do with code especially when it comes to games and having the mindset of I can do better or perfectionist mindset it can actually do more harm than good. And I learned that stopping doesn't have to mean just stop adding to the project but it can mean stop looking for or creating issues that aren't there. It can mean take a break and it can mean stop doing this portion and move on. 
 
 ### 🚀 Unlimited Time Features
 If I had unlimited time, I would add:
