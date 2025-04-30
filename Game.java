@@ -1,12 +1,20 @@
 import java.util.Scanner;
 
 public class Game {
+
+    //Attributes
     private Player player;
     private Train train;
     private boolean isRunning;
-    private long startTime;
+    private static long startTime;
     private static long timeLimit = 420_000; // 7 minutes
+    private static int score = 0;
 
+    /**
+     * 
+     * Constructor for the Game class.
+     * Initializes the game with a new train and player.
+     */
     public void start() {
         train = new Train();
         player = new Player(train.getStartingCar());
@@ -68,6 +76,21 @@ public class Game {
                 player.showInventory();
                 showTimeRemaining();
             }
+            else if (input.startsWith("solve ")) {
+                String attempt = input.substring(6);
+                if (player.getCurrentCar().hasPuzzle()) {
+                    boolean success = player.getCurrentCar().solvePuzzle(attempt);
+                    if (success) {
+                        System.out.println("You solved the puzzle!");
+                        Game.addScore(15);
+                    } else {
+                        System.out.println("That’s not the correct solution.");
+                        Game.addScore(-2);
+                    }
+                } else {
+                    System.out.println("There’s no puzzle here to solve.");
+                }
+            }            
             
         }
         scanner.close();
@@ -76,7 +99,10 @@ public class Game {
         System.out.println("Thanks for playing!");
     }
 
-
+    /**
+     * Checks if the time limit has been reached.
+     * @return true if time is up, false otherwise.
+     */
     private boolean isTimeUp() {
         long currentTime = System.currentTimeMillis();
         if ((currentTime - startTime) >= timeLimit) {
@@ -88,6 +114,9 @@ public class Game {
 
     }
 
+    /**
+     * Displays the time remaining in the game.
+     */
     private void showTimeRemaining() {
         long timeRemaining = timeLimit - (System.currentTimeMillis() - startTime);
         long minutes = (timeRemaining / 1000) / 60;
@@ -95,9 +124,26 @@ public class Game {
         System.out.println("⏳ Time remaining: " + minutes + " minutes and " + seconds + " seconds.");
     }
 
+    /**
+     * Adds time to the time limit.
+     * @param millis the amount of time in milliseconds to add.
+     */
     public static void addTime(long millis) {
         timeLimit += millis;
     }
+
+    public static void addScore(int points) {
+        score += points;
+    }
+    
+    public static int getScore() {
+        return score;
+    }
+    
+    public static long getTimeRemaining() {
+        return timeLimit - (System.currentTimeMillis() - startTime);
+    }
+    
     
 
     public static void main(String[] args) {

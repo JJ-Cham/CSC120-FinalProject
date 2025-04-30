@@ -9,6 +9,10 @@ public class CarLocation {
     private boolean isLocked = false;
     private String requiredItemName = "";
     private boolean isExit = false;
+    private boolean hasPuzzle = false;
+    private String puzzleAnswer = "";
+    private boolean puzzleSolved = false;
+
 
 
 
@@ -89,6 +93,24 @@ public class CarLocation {
     public String getRequiredItemName() {
         return requiredItemName;
     }
+
+    public void setPuzzle(String answer) {
+        hasPuzzle = true;
+        puzzleAnswer = answer.toLowerCase();
+    }
+    
+    public boolean hasPuzzle() {
+        return hasPuzzle && !puzzleSolved;
+    }
+    
+    public boolean solvePuzzle(String attempt) {
+        if (puzzleAnswer.equals(attempt.toLowerCase())) {
+            puzzleSolved = true;
+            return true;
+        }
+        return false;
+    }
+    
     
     
     

@@ -1,14 +1,20 @@
 import java.util.ArrayList;
 
 public class Player {
+    //Attributes
     private CarLocation currentCar;
     private ArrayList<Item> inventory;
 
-
+    /**
+     * Constructor for the Player class.
+     * Initializes the player with a starting car location and an empty inventory.
+     * @param startingCar The initial car location of the player.
+     */
     public Player(CarLocation startingCar) {
         this.currentCar = startingCar;
         this.inventory = new ArrayList<>();
     }
+
 
     public void move(String direction) {
         CarLocation nextCar = currentCar.getExit(direction);
@@ -31,8 +37,38 @@ public class Player {
         } else {
             System.out.println("You can't go that way!");
         }
+        if (currentCar.isExit()) {
+            if (Game.getTimeRemaining() > 60000) {
+                System.out.println("You escape with time to spare. You're a pro survivor.");
+                Game.addScore(20);
+            } else if (Game.getTimeRemaining() > 0) {
+                System.out.println("You escape just in time, panting as the doors slam behind you.");
+                Game.addScore(10);
+            } else {
+                System.out.println("You failed to escape in time.");
+                Game.addScore(0);
+            }
+        
+            System.out.println("Final Score: " + Game.getScore());
+            System.exit(0);
+        }
+
+        if (currentCar.isExit()) {
+            long timeLeft = Game.getTimeRemaining();
+        
+            if (timeLeft > 120000) {
+                System.out.println("You escaped with time to spare. You remain calm as you walk into the light.");
+            } else if (timeLeft > 0) {
+                System.out.println("You escape just as the lights cut out. That was close.");
+            } else {
+                System.out.println("⏰ You were too late... the doors jam shut behind you.");
+            }
+        
+            System.out.println("Final Score: " + Game.getScore());
+            System.exit(0);
+        }
+        
     }
-    
     
 
     public void look() {
@@ -42,16 +78,31 @@ public class Player {
         randomEvent();
     }
 
+    /**
+    * Allows the player to pick up an item from the current car and apply score effects.
+    * @param itemName The name of the item to take.
+    */
     public void takeItem(String itemName) {
         if (currentCar.hasItem(itemName)) {
-            Item item = currentCar.takeItem(itemName);
-            inventory.add(item);
-            System.out.println("You picked up: " + item.getName());
+           Item item = currentCar.takeItem(itemName); // ✅ make sure this line exists
+           inventory.add(item);
+           System.out.println("You picked up: " + item.getName());
+
+        // Scoring logic
+        if (item.getName().equalsIgnoreCase("Crowbar") || item.getName().equalsIgnoreCase("Key")) {
+            Game.addScore(10);  // Reward for real item
         } else {
-            System.out.println("No such item here.");
+            System.out.println("It seems useless...");
+            Game.addScore(-5);  // Penalty for fake item
         }
+
+    } else {
+        System.out.println("There is no item named '" + itemName + "' here.");
     }
-    
+}
+
+
+
     public void showInventory() {
         if (inventory.isEmpty()) {
             System.out.println("Your inventory is empty.");
@@ -63,6 +114,7 @@ public class Player {
         }
     }
     
+
     public boolean hasItem(String itemName) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(itemName)) {
@@ -71,6 +123,16 @@ public class Player {
         }
         return false;
     }
+
+    /**
+    * Gets the current CarLocation the player is in.
+    * @return the current car location.
+    */
+    public CarLocation getCurrentCar() {
+       return currentCar;
+   }
+
+
 
     private void randomEvent() {
         double chance = Math.random(); // Random number between 0.0 and 1.0
@@ -99,7 +161,10 @@ public class Player {
                     break;
             }
         }
-    }
+    } 
+
+
+
     
     
     

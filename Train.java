@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class Train {
+
+    //Attributes
     private ArrayList<CarLocation> cars;
 
     public Train() {
@@ -51,6 +53,7 @@ public class Train {
         cars.add(car3);
         cars.add(car4);
         cars.add(exitDoor);
+        car3.setPuzzle("729"); // Room requires player to solve "729" (like a code)
 
 
     }    

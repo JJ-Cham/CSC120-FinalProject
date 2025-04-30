@@ -1,6 +1,6 @@
 # CSC120-FinalProject
 # Trapped: The Ultimate Challenge
-Final Project 2 (FP2) — Escape Adventure Game
+Final Project — Escape Game
 By JJ Cham
 
 ---
@@ -25,6 +25,7 @@ Gameplay includes:
 - `go [direction]` — Move in a direction (e.g., `go forward`, `go backward`)
 - `take [item]` — Pick up an item
 - `inventory` — Check what you're carrying
+- `solve` - solve the a room-based puzzle
 - `quit` — Exit the game
 
 For full command descriptions and game map, see [`cheatsheet.md`](./cheatsheet.md).
@@ -32,8 +33,6 @@ For full command descriptions and game map, see [`cheatsheet.md`](./cheatsheet.m
 ---
 
 ## 🧩 Architecture Diagram
-
-![Architecture Diagram](./architecture.png)
 
 The game uses an object-oriented structure with classes for `Game`, `Player`, `Train`, `CarLocation`, and `Item`.
 
@@ -93,12 +92,25 @@ I designed the game using a simple but strong object-oriented structure with cla
 Alternative considered:
 At first, I thought about not creating a Train class, and instead just linking CarLocation objects directly inside Game. But I decided against that because putting all the train setup into Train.java makes the code way more modular and easier to change — if I wanted to add or rearrange cars later, I would only need to edit the Train class, not the whole game logic.
 
+## New Features for Final Version
+
+- A scoring system that rewards good decisions (real items, puzzle solving) and penalizes bad ones (useless items, failed attempts).
+
+- A room-based puzzle system (solve [answer]) that adds interaction beyond movement.
+
+- Multiple endings based on how much time you have left when you escape.
+
+- Random events that can either build suspense or reward you with extra time.
+
+- Final score is calculated at the end and displayed to the player.
+
+
 
 ## Additional Reflection Questions
  - What was your **overall approach** to tackling this project?
- - What **new thing(s)** did you learn / figure out in completing this project?
+ - What **new thing(s)** did you learn / figure out in completing this project? (Answered)
  - Is there anything that you wish you had **implemented differently**?
- - If you had **unlimited time**, what additional features would you implement?
+ - If you had **unlimited time**, what additional features would you implement? (Answered)
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
  - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.

@@ -17,43 +17,54 @@ If your game includes challenges that must be overcome to win, also list them be
 |:---|:---|
 | `look` | Look around your current train car: description, exits, and visible items. |
 | `go [direction]` | Move in the given direction (e.g., `go forward`, `go backward`). |
-| `take [item name]` | Pick up an item from the current car (e.g., `take crowbar`). |
-| `inventory` | View all items currently carried. |
-| `quit` | Quit the game early. |
+| `take [item]` | Pick up an item in the current car. |
+| `inventory` | View all items you're currently carrying. |
+| `solve [answer]` | Attempt to solve a room-based puzzle (e.g., `solve 729`). |
+| `quit` | Quit the game. |
 
 ---
-
 ## 🗺️ World Layout (Train Map)
-
 
 | Car | Description | Items | Special |
 |:---|:---|:---|:---|
-| Car 1 | Dirty, graffiti-covered subway car. | None | Starting point |
-| Car 2 | Flickering lights, debris. | Crowbar (real), Old Gum (fake) | Crowbar needed later |
-| Car 3 | Wrecked car, doors jammed shut. | None | Locked without Crowbar |
-| Car 4 | Sparking wires, luggage everywhere. | Key (real), Water Bottle (fake) | Key needed later |
-| Exit Door | Final locked door to freedom. | None | Requires Key to open |
+| Car 1 | Dirty, graffiti-covered. | None | Start here |
+| Car 2 | Flickering lights, debris. | Crowbar (real), Gum (fake) | |
+| Car 3 | Wrecked car. | Puzzle: Requires `solve 729` | Locked |
+| Car 4 | Luggage, wires. | Key (real), Bottle (fake) | |
+| Exit Door | Final car. | None | Locked, requires Key |
 
 ---
 
-## 🧩 Game Challenges
+## 🧩 Challenges & Game Systems
 
-- 🚪 **Locked Doors**:  
-  - Need the Crowbar to pry open the way from Car 2 to Car 3.
-  - Need the Key to open the Exit Door and escape.
+- 🔒 **Locked Doors**:  
+  - Crowbar opens access to Car 3  
+  - Key unlocks Exit Door  
 
 - ⏰ **Timer**:  
-  - 5-minute countdown from when the game begins.
-  - Time bonuses possible through lucky random events.
+  - You have 5 minutes to escape. Time bonuses possible through random events.
 
-- 👻 **Random Events**:  
-  - Sometimes hear creepy noises.
-  - Sometimes find helpful bonuses (+15s or +30s extra time).
+- 🎮 **Scoring System**:  
+  - +10 for useful items  
+  - -5 for fake items  
+  - +15 for solving puzzles  
+  - Bonus based on escape speed
 
-- 🎭 **Fake Items**:  
-  - Useless items (Old Gum, Water Bottle) clutter the train.
-  - Picking them up wastes time or offers no help.
+- 🎭 **Random Events**:  
+  - 20% chance during `look()` to trigger spooky or helpful messages  
+  - Some events add time (+15s, +30s)
 
+- 🧠 **Puzzles**:  
+  - Some rooms require solving a code (e.g., `solve 729`) to continue.
+
+---
+
+## 🏁 Endings
+
+- Escape early: calm exit + high score  
+- Escape late: close call + lower score  
+- Fail to escape: game over  
+- Final score is shown when the game ends
 ---
 
 ## ✨ Notes
